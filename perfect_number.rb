@@ -15,11 +15,6 @@ class PerfectNumber
   private
 
   def self.sum_of_factors(number)
-    factors = []
-
-    1.upto(number - 1) do |n|
-      factors << n if number % n == 0
-    end
-    factors.inject(:+)
+    (1...number).select { |n| number % n == 0 }.inject(:+)
   end
 end
