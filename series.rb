@@ -3,7 +3,7 @@
 
 class Series
   def initialize(string)
-    @numbers = string.each_char.map(&:to_i)
+    @numbers = string.chars.map(&:to_i)
   end
 
   def slices(count)
@@ -11,7 +11,6 @@ class Series
 
     @numbers.each_cons(count).to_a
   end
-
 end
 
 series = Series.new("01234")
