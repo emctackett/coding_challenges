@@ -1,6 +1,6 @@
 class PerfectNumber
   def self.classify(number)
-    raise "invalid number" if number < 0
+    raise "invalid number" if number < 2
 
     case
     when sum_of_factors(number) == number
