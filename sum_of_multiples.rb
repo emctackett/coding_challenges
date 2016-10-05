@@ -1,25 +1,20 @@
-require 'pry'
-
 class SumOfMultiples
-  def self.to(limit, multiples = [3, 5])
-     (0...limit).select do |number|
-      multiples.any? { |multiple| number % multiple == 0 }
-    end.reduce(:+)
-  end
+  attr_reader :factors
 
-  def initialize(*multiples)
-    @multiples = multiples
+  def initialize(*factors)
+    @factors = factors.empty? ? [3, 5] : factors
   end
 
   def to(limit)
-    self.class.to(limit, @multiples)
+    multiples_sum = 0
+
+    (1...limit).select do |num|
+      multiples_sum += num if factors.any? { |fac| num % fac == 0 }
+    end
+    multiples_sum
+  end
+
+  def self.to(limit)
+    SumOfMultiples.new.to(limit)
   end
 end
-
-p sum = SumOfMultiples.to(100)
-
-p sum = SumOfMultiples.new(4, 6).to(15) # 30
-
-p sum = SumOfMultiples.new(7, 13, 17).to(20) # 51
-
-p sum = SumOfMultiples.new(5, 6, 8).to(150) # 4419
