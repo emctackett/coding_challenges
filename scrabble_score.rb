@@ -30,7 +30,3 @@ class Scrabble
     end
   end
 end
-
-p Scrabble.new('a').score
-p Scrabble.score('alacrity')
-p Scrabble.new(nil).score
